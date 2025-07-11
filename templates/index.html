@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload File | COIN MALANA</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .container {
+      background: rgba(0,0,0,0.4);
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    input[type="file"], input[type="submit"] {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
+      border-radius: 5px;
+      border: none;
+    }
+    input[type="submit"] {
+      background-color: #00c896;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .flash {
+      margin-top: 20px;
+      color: #00ff99;
+      word-wrap: break-word;
+    }
+    a { color: #00ffcc; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Upload File</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="file" required>
+      <input type="submit" value="Upload Sekarang">
+    </form>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="flash">{{ message | safe }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+</body>
+</html>
